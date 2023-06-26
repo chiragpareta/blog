@@ -4,7 +4,7 @@ const MONGODB_URI = 'mongodb://localhost:27017/blog';
 
 async function connectToDatabase() {
     if (mongoose.connections[0].readyState) {
-        console.log("connecter successfully")
+        console.log("connected successfully")
         return { db: mongoose.connection.db };
     }
 

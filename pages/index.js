@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-// import './App.css'
 import axios from 'axios'
-// import { error } from 'console';
 import Styles from '@/styles/Home.module.css'
 
 export default function BlogPostManagement() {
@@ -13,7 +11,7 @@ export default function BlogPostManagement() {
   const [editTitle, setEditTitle] = useState('');
   const [editContent, setEditContent] = useState('');
   const [editAuthor, setEditAuthor] = useState('');
-  // Add event handlers for input fields
+
 
   //FETCH ALL BLOG POSTS
   const fetchBlogPosts = async () => {
@@ -26,6 +24,7 @@ export default function BlogPostManagement() {
     // console.log(response.data);
   };
 
+  //CREATING BLOG POST  
   const createBlogPost = async () => {
     try {
       const response = await axios.post('/api/createBlogPost', {
@@ -42,6 +41,7 @@ export default function BlogPostManagement() {
     }
   };
 
+  //DELETING BLOG POST
   const deleteBlogPost = async (id) => {
     try {
       await axios.delete(`/api/deleteBlogPost?id=${id}`);
@@ -53,6 +53,7 @@ export default function BlogPostManagement() {
     }
   };
 
+  //UPDATE BLOG POST
   const handlerupdateBlogPost = async (id) => {
     try {
       await axios.patch(`/api/updateBlogPost?id=${id}`);
