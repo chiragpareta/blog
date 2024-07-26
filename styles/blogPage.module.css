@@ -1,0 +1,101 @@
+/* Home.module.css */
+
+.homePage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.homePage h1,
+.homePage h2 {
+  text-align: center;
+  color: #333;
+}
+
+.formArea {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.formArea div {
+  margin-bottom: 10px;
+}
+
+.formArea label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formArea input[type="text"],
+.formArea textarea {
+  width: 97%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.formArea textarea {
+  resize: vertical;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.allBlogs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.blogs {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+  overflow: hidden; /* Hide any overflow content */
+}
+
+.blogs h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.blogs p {
+  color: #555;
+  overflow-wrap: break-word; /* Ensure long words break and wrap to the next line */
+  word-wrap: break-word; /* IE specific */
+  white-space: pre-wrap; /* Preserve whitespace and ensure wrapping */
+  max-width: 100%; /* Ensure content does not overflow the container */
+}
+
+.blogs button {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.blogs button:hover {
+  background-color: #c82333;
+}

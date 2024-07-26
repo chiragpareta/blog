@@ -1,131 +1,16 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios'
-import Styles from '@/styles/Home.module.css'
+import Link from 'next/link';
+import Styles from '@/styles/Home.module.css'; // Adjust the path as needed
 
-export default function BlogPostManagement() {
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [author, setAuthor] = useState('');
-  const [editPostId, setEditPostId] = useState('');
-  const [editTitle, setEditTitle] = useState('');
-  const [editContent, setEditContent] = useState('');
-  const [editAuthor, setEditAuthor] = useState('');
-
-
-  //FETCH ALL BLOG POSTS
-  const fetchBlogPosts = async () => {
-    try {
-      const response = await axios.get('/api/getBlogPost');
-      setBlogPosts(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-    // console.log(response.data);
-  };
-
-  //CREATING BLOG POST  
-  const createBlogPost = async () => {
-    try {
-      const response = await axios.post('/api/createBlogPost', {
-        title,
-        content,
-        author,
-      });
-      setBlogPosts([...blogPosts, response.data]);
-      setTitle('');
-      setContent('');
-      setAuthor('');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  //DELETING BLOG POST
-  const deleteBlogPost = async (id) => {
-    try {
-      await axios.delete(`/api/deleteBlogPost?id=${id}`);
-      const updatedPosts = blogPosts.filter((post) => post._id !== id);
-      setBlogPosts(updatedPosts);
-    } catch (error) {
-      console.error(error);
-      console.log("not working")
-    }
-  };
-
-  //UPDATE BLOG POST
-  const handlerupdateBlogPost = async (id) => {
-    try {
-      await axios.patch(`/api/updateBlogPost?id=${id}`);
-      const updateBLogPost = blogPosts.filter((post) => post._id !== id);
-      setBlogPosts(updateBLogPost);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchBlogPosts();
-  }, []);
-
-
+export default function Home() {
   return (
-    <div className={Styles.homePage}>
-      <h1>Blog Post Management</h1>
-      <div className={Styles.formArea}>
-
-        {/* Create Post Form */}
-        <form onSubmit={createBlogPost}>
-          <div>
-            <label>Title: </label>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label>Author</label>
-            <input
-              type="text"
-              placeholder="Author"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label>Content</label>
-            <textarea
-              placeholder="Content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              rows="6"
-              cols="30"
-            />
-          </div>
-
-          <button className={Styles.btn} type="submit">Create Post</button>
-        </form>
-      </div>
-
-      {/* Blog Post List */}
-      <h2>All Blog Posts</h2>
-      <div className={Styles.allBlogs}>
-
-        {blogPosts.map((post) => (
-          <div className={Styles.blogs} key={post._id}>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-            <p>Author: {post.author}</p>
-            <button onClick={() => deleteBlogPost(post._id)}>Delete</button>
-            <button onClick={() => handlerupdateBlogPost(post._id)}>Edit</button>
-          </div>
-        ))}
+    <div className={Styles.homeMainContent}>
+      <div className={Styles.homePage}>
+        <h1>Join Our Community of Readers and Writers</h1>
+        <p>This is the home page of our Next.js application.</p>
+        <Link href="/blogPage" className={Styles.blogButton}>
+          <button>Post Blog</button>
+        </Link>
       </div>
     </div>
   );
 }
-

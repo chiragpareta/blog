@@ -1,4 +1,4 @@
-.blogpage{
+/* .blogpage{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -27,11 +27,11 @@
     height: 30px;
   }
   button:hover{
-    background-color: bisque;
+    background-color: rgb(224, 224, 224);
   }
   form{
     justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: column;
-  }
+  } */
